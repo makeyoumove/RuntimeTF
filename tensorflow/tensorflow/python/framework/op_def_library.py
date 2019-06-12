@@ -20,6 +20,7 @@ from __future__ import division
 from __future__ import print_function
 
 import six
+import sys
 
 from tensorflow.core.framework import attr_value_pb2
 from tensorflow.core.framework import op_def_pb2
@@ -354,6 +355,8 @@ class OpDefLibrary(object):
 
   def _apply_op_helper(self, op_type_name, name=None, **keywords):
     """Implementation of apply_op that returns output_structure, op."""
+    print("KST_TEST_ophelper")
+    print(op_type_name)
     op_info = self._ops.get(op_type_name, None)
     if op_info is None:
       raise RuntimeError("Unrecognized Op name " + op_type_name)

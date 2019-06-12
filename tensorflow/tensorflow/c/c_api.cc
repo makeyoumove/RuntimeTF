@@ -19,6 +19,7 @@ limitations under the License.
 #include <limits>
 #include <memory>
 #include <vector>
+#include <iostream>
 
 // Required for IS_MOBILE_PLATFORM
 #include "tensorflow/core/platform/platform.h"  // NOLINT
@@ -1199,6 +1200,7 @@ static TF_OperationDescription* TF_NewOperationLocked(TF_Graph* graph,
                                                       const char* op_type,
                                                       const char* oper_name)
     EXCLUSIVE_LOCKS_REQUIRED(graph->mu) {
+			std::cout << "KST_TEST_NewOp " << op_type <<  " " << oper_name << std::endl;
   return new TF_OperationDescription(graph, op_type, oper_name);
 }
 
@@ -2696,24 +2698,33 @@ void TF_SessionRun(TF_Session* session, const TF_Buffer* run_options,
 
   TF_Run_Setup(noutputs, output_values, status);
 
+	std::cout << "KST_TEST_RunIn " << ninputs << " ";
   // Convert from TF_Output and TF_Tensor to a string and Tensor.
   std::vector<std::pair<string, Tensor>> input_pairs(ninputs);
   if (!TF_Run_Inputs(input_values, &input_pairs, status)) return;
   for (int i = 0; i < ninputs; ++i) {
     input_pairs[i].first = OutputName(inputs[i]);
+		std:: cout << input_pairs[i].first << " ";
   }
 
+	std::cout << "\nKST_TEST_RunOut " << noutputs << " ";
   // Convert from TF_Output to string names.
   std::vector<string> output_names(noutputs);
   for (int i = 0; i < noutputs; ++i) {
     output_names[i] = OutputName(outputs[i]);
+		std:: cout << output_names[i] << " ";
   }
+
+	std::cout << "\nKST_TEST_RunOp " << ntargets << " ";
 
   // Convert from TF_Operation* to string names.
   std::vector<string> target_names(ntargets);
   for (int i = 0; i < ntargets; ++i) {
     target_names[i] = target_opers[i]->node.name();
+		std:: cout << target_names[i] << " ";
   }
+
+	std::cout << std::endl;
 
   // Actually run.
   TF_Run_Helper(session->session, nullptr, run_options, input_pairs,

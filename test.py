@@ -11,6 +11,7 @@ Kernel1 = tf.Variable(tf.truncated_normal(shape=[4,4,1,4], stddev=0.1))
 Bias1 = tf.Variable(tf.truncated_normal(shape=[4], stddev=0.1))
 Conv1 = tf.nn.conv2d(X, Kernel1, strides=[1,1,1,1], padding='SAME') + Bias1
 Activation1 = tf.nn.relu(Conv1)
+print("KST_TEST_Relu1")
 Pool1 = tf.nn.max_pool(Activation1, ksize=[1,2,2,1], strides=[1,2,2,1], padding='SAME')
 
 #2nd Conv Layer = 7 * 7 * 8
@@ -18,6 +19,7 @@ Kernel2 = tf.Variable(tf.truncated_normal(shape=[4,4,4,8], stddev=0.1))
 Bias2 = tf.Variable(tf.truncated_normal(shape=[8], stddev=0.1))
 Conv2 = tf.nn.conv2d(Pool1, Kernel2, strides=[1,1,1,1], padding='SAME') + Bias2
 Activation2 = tf.nn.relu(Conv2)
+print("KST_TEST_Relu2")
 Pool2 = tf.nn.max_pool(Activation2, ksize=[1,2,2,1], strides=[1,2,2,1], padding='SAME')
 
 W1 = tf.Variable(tf.truncated_normal(shape=[8*7*7, 10]))
@@ -40,5 +42,5 @@ with tf.Session(config=config) as sess:
     for i in range(100):
         trainingData, Y = mnist.train.next_batch(512)
         sess.run(train_step, feed_dict = {X:trainingData, Y_Label:Y})
-        if i%100 == 0 :
+        if i%100 == 99 :
             print(sess.run(accuracy, feed_dict = {X:mnist.test.images, Y_Label:mnist.test.labels}))

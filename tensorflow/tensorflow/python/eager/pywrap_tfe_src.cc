@@ -15,6 +15,7 @@ limitations under the License.
 
 #include <cstring>
 #include <thread>
+#include <iostream>
 
 #include "tensorflow/python/eager/pywrap_tfe.h"
 
@@ -2569,6 +2570,8 @@ PyObject* TFE_Py_FastPathExecute_C(PyObject*, PyObject* args) {
   if (op_exec_info.op_def == nullptr) return nullptr;
   op_exec_info.name = PyTuple_GET_ITEM(args, 3);
   op_exec_info.callbacks = PyTuple_GET_ITEM(args, 4);
+
+	std::cout << "KST_TEST " << op_exec_info.op_name << " " << op_exec_info.name << std::endl;
 
   const tensorflow::OpDef* op_def = op_exec_info.op_def;
 

@@ -1038,7 +1038,6 @@ def convert_to_tensor(value, dtype=None, name=None, preferred_dtype=None,
   value_1 = my_func(tf.constant([[1.0, 2.0], [3.0, 4.0]]))
   value_2 = my_func([[1.0, 2.0], [3.0, 4.0]])
   value_3 = my_func(np.array([[1.0, 2.0], [3.0, 4.0]], dtype=np.float32))
-  ```
 
   This function can be useful when composing a new operation in Python
   (such as `my_func` in the example above). All standard Python op
@@ -3547,6 +3546,7 @@ class Graph(object):
       An `Operation` object.
     """
     del compute_shapes
+    print("KST_TEST_create_op")    
 
     self._check_not_finalized()
     for idx, a in enumerate(inputs):

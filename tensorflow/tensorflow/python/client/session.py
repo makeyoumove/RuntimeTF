@@ -927,6 +927,7 @@ class BaseSession(SessionInterface):
         compat.as_bytes(options.SerializeToString())) if options else None
     run_metadata_ptr = tf_session.TF_NewBuffer() if run_metadata else None
 
+    print("KST_TEST_FETCH", fetches)
     try:
       result = self._run(None, fetches, feed_dict, options_ptr,
                          run_metadata_ptr)

@@ -15,6 +15,7 @@ limitations under the License.
 
 #include "tensorflow/core/common_runtime/function.h"
 
+#include <iostream>
 #include <deque>
 #include <vector>
 

@@ -1344,6 +1344,8 @@ Status DirectSession::GetOrCreateExecutors(
         strings::StrCat(key, ";", handle_name_counter_value);
   }
 
+	std::cout << "KST_TEST_key1 " << key << std::endl;
+
   // See if we already have the executors for this run.
   {
     mutex_lock l(executor_lock_);  // could use reader lock
@@ -1377,6 +1379,7 @@ Status DirectSession::GetOrCreateExecutors(
         strings::StrCat(sorted_key, ";", handle_name_counter_value);
   }
 
+	std::cout << "KST_TEST_key2 " << key << std::endl;
   // See if we already have the executors for this run.
   {
     mutex_lock l(executor_lock_);
@@ -1518,6 +1521,7 @@ Status DirectSession::CreateGraphs(
   };
   popts.flib_def = &client_graph->graph.flib_def();
   popts.control_flow_added = false;
+	std::cout << "KST_CHECK_Graph " << popts.flib_def->num_functions() << std::endl;
 
   std::unordered_map<string, GraphDef> partitions;
   TF_RETURN_IF_ERROR(Partition(popts, &client_graph->graph, &partitions));

@@ -15,6 +15,7 @@ limitations under the License.
 
 #include "tensorflow/core/common_runtime/graph_execution_state.h"
 
+#include <iostream>
 #include <memory>
 #include <set>
 #include <string>
@@ -758,6 +759,8 @@ Status GraphExecutionState::BuildGraph(const BuildGraphOptions& options,
     CopyGraph(*graph_, optimized_graph.get());
     optimized_flib.reset(new FunctionLibraryDefinition(*flib_def_));
   }
+
+	std::cout << "KST_CHECK_FLIB " << optimized_flib.get()->num_functions() << " " << flib_def_.get()->num_functions() << "\n";
 
   subgraph::RewriteGraphMetadata rewrite_metadata;
   if (session_options_ == nullptr ||

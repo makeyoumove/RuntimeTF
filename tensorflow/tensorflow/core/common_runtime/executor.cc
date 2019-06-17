@@ -15,6 +15,7 @@ limitations under the License.
 
 #include "tensorflow/core/common_runtime/executor.h"
 
+#include <iostream>
 #include <atomic>
 #include <deque>
 #include <memory>
@@ -1507,6 +1508,7 @@ void ExecutorState::RunAsync(Executor::DoneCallback done) {
   const Graph* graph = impl_->graph_.get();
   TaggedNodeSeq ready;
 
+  std::cout << "KST_TEST_RunAsync\n";
   // Ask the device to fill in the device context map.
   Device* device = impl_->params_.device;
   const Status fill_status =

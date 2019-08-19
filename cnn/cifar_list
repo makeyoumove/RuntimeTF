@@ -1,0 +1,11 @@
+128_alexnet
+64_densenet40_k12
+64_densenet100_k12
+64_densenset100_k24
+32_nasnet
+128_resnet20
+128_resnet32
+128_resnet44
+128_resnet56
+128_resnet110
+32_trivial

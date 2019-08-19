@@ -11,7 +11,7 @@ from collections import namedtuple
 config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
 
-in_dir = '/home/ssl/inception_cifar_data/convert_ilsvrc2012'
+in_dir = '/home/dumbo/inception_cifar_data/convert_ilsvrc2012'
 in_name = 'imagenet'
 model_name = 'inception3'
 batch_size = 64
@@ -20,7 +20,14 @@ tf.app.flags.DEFINE_string("ps_hosts", "", "ps hosts")
 tf.app.flags.DEFINE_string("worker_hosts", "", "worker hosts")
 tf.app.flags.DEFINE_string("job_name", "", "'ps' / 'worker'")
 tf.app.flags.DEFINE_integer("task_index", 0, "Index of task")
+tf.app.flags.DEFINE_integer("batch_size", 64, "Batch size")
+tf.app.flags.DEFINE_string("data_name", "imagenet", "Dataset")
+tf.app.flags.DEFINE_string("model_name", "inception3", "Model")
+
 params = tf.app.flags.FLAGS
+in_name = params.data_name
+model_name = params.model_name
+batch_size = params.batch_size
 ps_hosts = params.ps_hosts.split(",")
 worker_hosts = params.worker_hosts.split(",")
 

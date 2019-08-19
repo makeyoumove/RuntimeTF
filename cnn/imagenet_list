@@ -1,0 +1,11 @@
+32_googlenet
+32_inception3
+32_nasnet
+32_overfeat
+64_resnet50
+32_resnet101
+32_resnet152
+32_trivial
+64_vgg11
+64_vgg16
+64_vgg19

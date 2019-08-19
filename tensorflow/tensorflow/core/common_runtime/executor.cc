@@ -1508,7 +1508,7 @@ void ExecutorState::RunAsync(Executor::DoneCallback done) {
   const Graph* graph = impl_->graph_.get();
   TaggedNodeSeq ready;
 
-  std::cout << "KST_TEST_RunAsync\n";
+//  std::cout << "KST_TEST_RunAsync\n";
   // Ask the device to fill in the device context map.
   Device* device = impl_->params_.device;
   const Status fill_status =
@@ -1528,6 +1528,7 @@ void ExecutorState::RunAsync(Executor::DoneCallback done) {
     delete this;
     done(Status::OK());
   } else {
+//		std::cout << "KST_TEST_RunAsync " << ready.size() << std::endl;
     num_outstanding_ops_ = ready.size();
     root_frame_->iterations[0]->outstanding_ops = ready.size();
     done_cb_ = std::move(done);

@@ -430,6 +430,7 @@ Status DirectSession::RunInternal(int64 step_id, const RunOptions& run_options,
                                   CallFrameInterface* call_frame,
                                   ExecutorsAndKeys* executors_and_keys,
                                   RunMetadata* run_metadata) {
+//	std::cout << "KST_CHECK_RunInternal\n";
   const uint64 start_time_usecs = options_.env->NowMicros();
   string session_id_meta = strings::StrCat("SessionRun #id=", step_id, "#");
   tracing::ScopedActivity activity(session_id_meta);
@@ -701,17 +702,38 @@ Status DirectSession::Run(const RunOptions& run_options,
   TF_RETURN_IF_ERROR(CheckNotClosed());
   TF_RETURN_IF_ERROR(CheckGraphCreated("Run()"));
   direct_session_runs->GetCell()->IncrementBy(1);
+// KST_SPLIT
+	int spl = 1, sps;
+	std::vector<Tensor> output_gather;
 
-	std::cout << "KST_TEST_DS\n";
+	if(inputs.size() >= 2) {
+//		std::cout << "KST_TEST_SLICE " << inputs[1].second.dims() << " ";
+//		for (int i=0; i<inputs[1].second.dims(); i++) std:: cout << inputs[1].second.dim_size(i) << " ";
+		Tensor t = inputs[1].second.Slice(0, inputs[1].second.dim_size(0) / spl);
+//		std::cout << "\nKST_TEST_SLICE " << t.dims() << " ";
+//		for (int i=0; i<t.dims(); i++) std::cout << t.dim_size(i) << " ";
+//		std::cout << std::endl;
+	}
+
+for(int sc=0; sc<spl; sc++) {
+
+//	std::cout << "KST_CHK_OUTPUTSIZE " << output_names.size() << "\n" << "KST_CHK_TARGETSIZE " << target_nodes.size() << std::endl;
+//	std::cout << "KST_CHK_INPUTSIZE " << inputs.size() << " ";
   // Extract the inputs names for this run of the session.
   std::vector<string> input_tensor_names;
   input_tensor_names.reserve(inputs.size());
   size_t input_size = 0;
   for (const auto& it : inputs) {
     input_tensor_names.push_back(it.first);
+		size_t value = it.second.AllocatedBytes();
+		value /= spl;
+    input_size += value;
+//		std::cout << it.first << " " << value << " ";
     input_size += it.second.AllocatedBytes();
+//		std::cout << it.first << " " << it.second.AllocatedBytes() << " ";
   }
   metrics::RecordGraphInputTensors(input_size);
+//	std::cout << std::endl;
 
   // Check if we already have an executor for these arguments.
   ExecutorsAndKeys* executors_and_keys;
@@ -732,17 +754,29 @@ Status DirectSession::Run(const RunOptions& run_options,
   FunctionCallFrame call_frame(executors_and_keys->input_types,
                                executors_and_keys->output_types);
   gtl::InlinedVector<Tensor, 4> feed_args(inputs.size());
+
   for (const auto& it : inputs) {
+		sps = it.second.dim_size(0) / spl;
     if (it.second.dtype() == DT_RESOURCE) {
       Tensor tensor_from_handle;
       TF_RETURN_IF_ERROR(
           ResourceHandleToInputTensor(it.second, &tensor_from_handle));
-      feed_args[executors_and_keys->input_name_to_index[it.first]] =
-          tensor_from_handle;
+			feed_args[executors_and_keys->input_name_to_index[it.first]] =
+          tensor_from_handle.Slice(sc * sps, (sc + 1) * sps);
+		  //feed_args[executors_and_keys->input_name_to_index[it.first]] =
+      //    tensor_from_handle;
+//			std::cout << "KST_CHK_INPUT1 " << it.first << " " << feed_args[executors_and_keys->input_name_to_index[it.first]].dims() << " ";
+//			for(int i=0; i<feed_args[executors_and_keys->input_name_to_index[it.first]].dims(); i++) std::cout << feed_args[executors_and_keys->input_name_to_index[it.first]].dim_size(i) << " ";
+//			std::cout << std::endl;
     } else {
-      feed_args[executors_and_keys->input_name_to_index[it.first]] = it.second;
+      feed_args[executors_and_keys->input_name_to_index[it.first]] = it.second.Slice(sc * sps, (sc + 1) * sps);
+			//feed_args[executors_and_keys->input_name_to_index[it.first]] = it.second;
+//			std::cout << "KST_CHK_INPUT2 " << it.first << " " << feed_args[executors_and_keys->input_name_to_index[it.first]].dims() << " ";
+//			for(int i=0; i<feed_args[executors_and_keys->input_name_to_index[it.first]].dims(); i++) std::cout << feed_args[executors_and_keys->input_name_to_index[it.first]].dim_size(i) << " ";
+//			std::cout << std::endl;
     }
   }
+
   const Status s = call_frame.SetArgs(feed_args);
   if (errors::IsInternal(s)) {
     return errors::InvalidArgument(s.error_message());
@@ -755,12 +789,13 @@ Status DirectSession::Run(const RunOptions& run_options,
   if (LogMemory::IsEnabled()) {
     LogMemory::RecordStep(step_id, run_state_args.handle);
   }
-
+	
   TF_RETURN_IF_ERROR(RunInternal(step_id, run_options, &call_frame,
                                  executors_and_keys, run_metadata));
-
+//  std::cout << "KST_CHK_RUNEND\n";
   // Receive outputs.
   if (outputs) {
+//		std::cout << "KST_CHK_OUTPUT " << outputs << std::endl;
     std::vector<Tensor> sorted_outputs;
     const Status s = call_frame.ConsumeRetvals(
         &sorted_outputs, /* allow_dead_tensors = */ false);
@@ -788,6 +823,7 @@ Status DirectSession::Run(const RunOptions& run_options,
     outputs->clear();
     size_t output_size = 0;
     outputs->reserve(sorted_outputs.size());
+//		std::cout << "KST_CHK_OUTPUT " << output_names.size() << " ";
     for (int i = 0; i < output_names.size(); ++i) {
       const string& output_name = output_names[i];
       if (first_indices.empty() || first_indices[i] == i) {
@@ -798,9 +834,21 @@ Status DirectSession::Run(const RunOptions& run_options,
         outputs->push_back((*outputs)[first_indices[i]]);
       }
       output_size += outputs->back().AllocatedBytes();
+//			std::cout << output_names[i] << " " << outputs->back().AllocatedBytes() << " " << outputs->back().SummarizeValue(10000) << " " << outputs->back().dims() << " ";
+//			for( int j=0; j< outputs->back().dims(); j++) std::cout << outputs->back().dim_size(j) << " ";
     }
+//		std::cout << std::endl;
     metrics::RecordGraphOutputTensors(output_size);
+
+		if (output_gather.empty()) output_gather = *outputs;
+		else
+			for (int i=0; i<outputs->size(); i++) output_gather.push_back(outputs->at(i));
+
   }
+
+	}
+
+	if(!(output_gather.empty())) outputs = &output_gather;
 
   return Status::OK();
 }
@@ -1344,7 +1392,7 @@ Status DirectSession::GetOrCreateExecutors(
         strings::StrCat(key, ";", handle_name_counter_value);
   }
 
-	std::cout << "KST_TEST_key1 " << key << std::endl;
+//	std::cout << "KST_TEST_key1 " << key << std::endl;
 
   // See if we already have the executors for this run.
   {
@@ -1379,7 +1427,8 @@ Status DirectSession::GetOrCreateExecutors(
         strings::StrCat(sorted_key, ";", handle_name_counter_value);
   }
 
-	std::cout << "KST_TEST_key2 " << key << std::endl;
+//	std::cout << "KST_TEST_key2 " << key << std::endl;
+	
   // See if we already have the executors for this run.
   {
     mutex_lock l(executor_lock_);
@@ -1521,7 +1570,7 @@ Status DirectSession::CreateGraphs(
   };
   popts.flib_def = &client_graph->graph.flib_def();
   popts.control_flow_added = false;
-	std::cout << "KST_CHECK_Graph " << popts.flib_def->num_functions() << std::endl;
+//	std::cout << "KST_CHECK_Graph " << popts.flib_def->num_functions() << std::endl;
 
   std::unordered_map<string, GraphDef> partitions;
   TF_RETURN_IF_ERROR(Partition(popts, &client_graph->graph, &partitions));

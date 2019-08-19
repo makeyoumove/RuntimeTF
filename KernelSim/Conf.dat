@@ -1,0 +1,22 @@
+1
+1
+100000
+0
+2
+dist_swivel 0
+dist_swivel 0
+
+dist_LJ 0.9031
+dist_STMV 0.8970
+dist_inception 0.5504
+dist_resnet 0.5748
+dist_swivel 0.7703
+
+
+single4_vgg11 1.0102
+single4_LJ 0.6259
+single4_overfeat 1.0350
+single4_STMV 0.6802
+single4_swivel 1.1857
+single4_resnet 0.9112
+single4_inception 0.9111

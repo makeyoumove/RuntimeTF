@@ -734,7 +734,9 @@ def _GradientsHelper(ys,
                 # node to the graph to compute gradients.
                 in_grads = _MaybeCompile(grad_scope, op, func_call,
                                          lambda: _SymGrad(op, out_grads))
+#              print("KST_TEST_GRAD ", in_grads);
               in_grads = _AsList(in_grads)
+#              print("KST_TEST_GRAD ", in_grads);
               _VerifyGeneratedGradients(in_grads, op)
               if gate_gradients and len([x for x in in_grads
                                          if x is not None]) > 1:

@@ -1,0 +1,10 @@
+Open configuration file.
+Open Application data for App 0.
+106.353
+Open Application data for App 1.
+79.164
+Reading data is done.
+            App           Loop      O.Runtime      R.Runtime       Slowdown
+              0          94026    9.99995e+06    1.00381e+07      0.381472%
+              1         126320          1e+07    1.01135e+07       1.13464%
+Simulation ends at 1.01135e+07

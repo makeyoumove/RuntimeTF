@@ -3546,7 +3546,7 @@ class Graph(object):
       An `Operation` object.
     """
     del compute_shapes
-    print("KST_TEST_create_op")    
+#    print("KST_TEST_create_op", inputs)    
 
     self._check_not_finalized()
     for idx, a in enumerate(inputs):

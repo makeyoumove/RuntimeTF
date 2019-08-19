@@ -16,6 +16,7 @@ limitations under the License.
 #include "tensorflow/python/client/tf_session_helper.h"
 
 #include <cstring>
+#include <iostream>
 
 #include "tensorflow/c/c_api.h"
 #include "tensorflow/c/c_api_internal.h"
@@ -392,6 +393,7 @@ void TF_SessionRun_wrapper_helper(TF_Session* session, const char* handle,
       Set_TF_Status_from_Status(out_status, s);
       return;
     }
+//		std::cout << "KST_TEST_INPUT_DIM " << input_vals_safe.back().get()->shape.dim_sizes()[0] << std::endl;
     input_vals.push_back(input_vals_safe.back().get());
   }
 

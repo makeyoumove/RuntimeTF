@@ -1,0 +1,22 @@
+EXEC FILE: KernelSim
+DATA FILE: Conf.dat, [App Name]
+CONTENT OF Conf.dat:
+[Mode: 1]
+[Algorithm: 1]
+[Time]
+[Verbose: 0~3]
+[Number of Apps]
+[App Name] [Slowdown from CPU side] ([App Name] should be same with the name of the data file)
+...
+
+CONTENT OF [App Name]:
+TotalIterationTime(ms) [Time]
+TheRatioOfDurationTime(%) [Percent]
+TheRatioOfIdleTime(%) [Percent]
+[Kernel Pattern]
+...
+
+Example of Kernel Pattern:
+14 maxwell_sgemm_128x128_raggedMn_nt 0.000000 1.191920 -1.000000
+[stream] [function_name] [start_time] [duration] [bandwidth]
+

@@ -1,0 +1,740 @@
+Open configuration file.
+Open Application data for App 0.
+Open Application data for App 1.
+Reading data is done.
+App 0 have 1 loops.
+App 1 have 1 loops.
+At 0: 2 events are in progress
+New kernel [From 0 to 1.38415] started.
+At 0: 2 events are in progress
+Another kernel is already scheduled... [Wait until 1.38415]
+At 1.38415: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 1.38576
+At 1.38415: 2 events are in progress
+New kernel [From 1.38415 to 2.7683] started.
+At 1.38576: 2 events are in progress
+Another kernel is already scheduled... [Wait until 2.7683]
+At 2.7683: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 2.76991
+At 2.7683: 2 events are in progress
+New kernel [From 2.7683 to 4.0941] started.
+At 2.76991: 2 events are in progress
+Another kernel is already scheduled... [Wait until 4.0941]
+At 4.0941: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 4.09965
+At 4.0941: 2 events are in progress
+New kernel [From 4.0941 to 5.4199] started.
+At 4.09965: 2 events are in progress
+New memcpy [From 4.09965 to 5.10969] started.
+At 5.10969: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 5.11672
+At 5.11672: 2 events are in progress
+New memcpy [From 5.11672 to 6.21662] started.
+At 5.4199: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 5.42545
+At 5.42545: 2 events are in progress
+New memcpy [From 5.42545 to 7.44552] started.
+There are co-scheduled memcpys (D->H), so their finish time is delayed.
+Finish time of existing memcpy delayed from 6.21662 to 7.00779
+At 7.00779: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 38.469
+The number of co-scheduled memcpys (D->H), is reduced, so their finish time is also reduced
+Finish time of existing memcpy has been brought forward from 7.44552 to 7.22665
+At 7.22665: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 7.23368
+At 7.23368: 2 events are in progress
+New memcpy [From 7.23368 to 8.33358] started.
+At 8.33358: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 39.7948
+At 38.469: 2 events are in progress
+New memcpy [From 38.469 to 38.4699] started.
+At 38.4699: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 38.4713
+At 38.4713: 2 events are in progress
+New memcpy [From 38.4713 to 38.4726] started.
+At 38.4726: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 38.4839
+At 38.4839: 2 events are in progress
+New memcpy [From 38.4839 to 38.4848] started.
+At 38.4848: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 39.579
+At 39.579: 2 events are in progress
+New memcpy [From 39.579 to 39.5859] started.
+At 39.5859: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 39.5992
+At 39.5992: 2 events are in progress
+New memcpy [From 39.5992 to 39.6054] started.
+At 39.6054: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 39.6698
+At 39.6698: 2 events are in progress
+New memcpy [From 39.6698 to 39.675] started.
+At 39.675: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 39.7044
+At 39.7044: 2 events are in progress
+New memcpy [From 39.7044 to 39.7117] started.
+At 39.7117: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 39.9213
+At 39.7948: 2 events are in progress
+New memcpy [From 39.7948 to 39.7957] started.
+At 39.7957: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 39.797
+At 39.797: 2 events are in progress
+New memcpy [From 39.797 to 39.7984] started.
+At 39.7984: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 39.8097
+At 39.8097: 2 events are in progress
+New memcpy [From 39.8097 to 39.8106] started.
+At 39.8106: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 40.9048
+At 39.9213: 2 events are in progress
+New kernel [From 39.9213 to 39.9237] started.
+At 39.9237: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 39.9425
+At 39.9425: 2 events are in progress
+New kernel [From 39.9425 to 39.945] started.
+At 39.945: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 40.0162
+At 40.0162: 2 events are in progress
+New memcpy [From 40.0162 to 40.0199] started.
+At 40.0199: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 40.0282
+At 40.0282: 2 events are in progress
+New kernel [From 40.0282 to 40.0297] started.
+At 40.0297: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 40.4697
+At 40.4697: 2 events are in progress
+New memcpy [From 40.4697 to 40.4794] started.
+At 40.4794: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 40.5087
+At 40.5087: 2 events are in progress
+New kernel [From 40.5087 to 40.51] started.
+At 40.51: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 40.9715
+At 40.9048: 2 events are in progress
+New memcpy [From 40.9048 to 40.9117] started.
+At 40.9117: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 40.925
+At 40.925: 2 events are in progress
+New memcpy [From 40.925 to 40.9312] started.
+At 40.9312: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 40.9956
+At 40.9715: 2 events are in progress
+New memcpy [From 40.9715 to 40.9783] started.
+At 40.9783: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 41.004
+At 40.9956: 2 events are in progress
+New memcpy [From 40.9956 to 41.0007] started.
+At 41.0007: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 41.0301
+At 41.004: 2 events are in progress
+New memcpy [From 41.004 to 41.0102] started.
+At 41.0102: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 41.4073
+At 41.0301: 2 events are in progress
+New memcpy [From 41.0301 to 41.0375] started.
+At 41.0375: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 41.2471
+At 41.2471: 2 events are in progress
+New kernel [From 41.2471 to 41.2495] started.
+At 41.2495: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 41.2683
+At 41.2683: 2 events are in progress
+New kernel [From 41.2683 to 41.2708] started.
+At 41.2708: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 41.342
+At 41.342: 2 events are in progress
+New memcpy [From 41.342 to 41.3457] started.
+At 41.3457: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 41.354
+At 41.354: 2 events are in progress
+New kernel [From 41.354 to 41.3555] started.
+At 41.3555: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 41.7955
+At 41.4073: 2 events are in progress
+New memcpy [From 41.4073 to 41.4127] started.
+At 41.4127: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 62.856
+At 41.7955: 2 events are in progress
+New memcpy [From 41.7955 to 41.8052] started.
+At 41.8052: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 41.8345
+At 41.8345: 2 events are in progress
+New kernel [From 41.8345 to 41.8358] started.
+At 41.8358: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 42.2973
+At 42.2973: 2 events are in progress
+New memcpy [From 42.2973 to 42.3041] started.
+At 42.3041: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 42.3298
+At 42.3298: 2 events are in progress
+New memcpy [From 42.3298 to 42.336] started.
+At 42.336: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 42.7331
+At 42.7331: 2 events are in progress
+New memcpy [From 42.7331 to 42.7385] started.
+At 42.7385: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 64.1817
+At 62.856: 2 events are in progress
+New memcpy [From 62.856 to 63.807] started.
+At 63.807: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 71.7337
+At 64.1817: 2 events are in progress
+New memcpy [From 64.1817 to 65.1328] started.
+At 65.1328: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 73.0595
+At 71.7337: 2 events are in progress
+New memcpy [From 71.7337 to 73.2925] started.
+At 73.0595: 2 events are in progress
+New memcpy [From 73.0595 to 76.177] started.
+There are co-scheduled memcpys (H->D), so their finish time is delayed.
+Finish time of existing memcpy delayed from 73.2925 to 73.5254
+At 73.5254: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 73.5995
+The number of co-scheduled memcpys (H->D), is reduced, so their finish time is also reduced
+Finish time of existing memcpy has been brought forward from 76.177 to 74.8512
+At 73.5995: 2 events are in progress
+New kernel [From 73.5995 to 74.893] started.
+At 74.8512: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 74.9253
+At 74.893: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 84.9481
+New event will start at 94.478
+At 74.9253: 3 events are in progress
+New kernel [From 74.9253 to 76.2188] started.
+At 76.2188: 3 events are in progress
+Scheduled kernel is finished.
+New event will start at 86.2739
+New event will start at 95.8038
+At 84.9481: 4 events are in progress
+New memcpy [From 84.9481 to 95.5272] started.
+At 86.2739: 4 events are in progress
+New memcpy [From 86.2739 to 107.432] started.
+There are co-scheduled memcpys (H->D), so their finish time is delayed.
+Finish time of existing memcpy delayed from 95.5272 to 104.78
+At 94.478: 4 events are in progress
+New kernel [From 94.478 to 94.8299] started.
+At 94.8299: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 94.8484
+At 94.8484: 4 events are in progress
+New kernel [From 94.8484 to 95.2092] started.
+At 95.2092: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 95.2425
+At 95.2425: 4 events are in progress
+New kernel [From 95.2425 to 95.6008] started.
+At 95.6008: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 95.6034
+At 95.6034: 4 events are in progress
+New kernel [From 95.6034 to 95.9632] started.
+At 95.8038: 4 events are in progress
+Another kernel is already scheduled... [Wait until 95.9632]
+At 95.9632: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 95.9648
+At 95.9632: 4 events are in progress
+New kernel [From 95.9632 to 96.3151] started.
+At 95.9648: 4 events are in progress
+Another kernel is already scheduled... [Wait until 96.3151]
+At 96.3151: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 96.3337
+At 96.3151: 4 events are in progress
+New kernel [From 96.3151 to 96.6778] started.
+At 96.3337: 4 events are in progress
+Another kernel is already scheduled... [Wait until 96.6778]
+At 96.6778: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 96.6823
+At 96.6778: 4 events are in progress
+New kernel [From 96.6778 to 97.0385] started.
+At 96.6823: 4 events are in progress
+Another kernel is already scheduled... [Wait until 97.0385]
+At 97.0385: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 97.0719
+At 97.0385: 4 events are in progress
+New kernel [From 97.0385 to 97.4075] started.
+At 97.0719: 4 events are in progress
+Another kernel is already scheduled... [Wait until 97.4075]
+At 97.4075: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 97.4194
+At 97.4075: 4 events are in progress
+New kernel [From 97.4075 to 97.7658] started.
+At 97.4194: 4 events are in progress
+Another kernel is already scheduled... [Wait until 97.7658]
+At 97.7658: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 97.7684
+At 97.7658: 4 events are in progress
+New kernel [From 97.7658 to 98.1859] started.
+At 97.7684: 4 events are in progress
+Another kernel is already scheduled... [Wait until 98.1859]
+At 98.1859: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 98.2048
+At 98.1859: 4 events are in progress
+New kernel [From 98.1859 to 98.5458] started.
+At 98.2048: 4 events are in progress
+Another kernel is already scheduled... [Wait until 98.5458]
+At 98.5458: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 98.5473
+At 98.5458: 4 events are in progress
+New kernel [From 98.5458 to 99.0067] started.
+At 98.5473: 4 events are in progress
+Another kernel is already scheduled... [Wait until 99.0067]
+At 99.0067: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 99.0227
+At 99.0067: 4 events are in progress
+New kernel [From 99.0067 to 99.3694] started.
+At 99.0227: 4 events are in progress
+Another kernel is already scheduled... [Wait until 99.3694]
+At 99.3694: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 99.3739
+At 99.3694: 4 events are in progress
+New kernel [From 99.3694 to 99.8016] started.
+At 99.3739: 4 events are in progress
+Another kernel is already scheduled... [Wait until 99.8016]
+At 99.8016: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 99.8071
+At 99.8016: 4 events are in progress
+New kernel [From 99.8016 to 100.17] started.
+At 99.8071: 4 events are in progress
+Another kernel is already scheduled... [Wait until 100.17]
+At 100.17: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 100.182
+At 100.17: 4 events are in progress
+New kernel [From 100.17 to 100.566] started.
+At 100.182: 4 events are in progress
+Another kernel is already scheduled... [Wait until 100.566]
+At 100.566: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 100.609
+At 100.566: 4 events are in progress
+New kernel [From 100.566 to 100.986] started.
+At 100.609: 4 events are in progress
+Another kernel is already scheduled... [Wait until 100.986]
+At 100.986: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 101.005
+At 100.986: 4 events are in progress
+New kernel [From 100.986 to 101.378] started.
+At 101.005: 4 events are in progress
+Another kernel is already scheduled... [Wait until 101.378]
+At 101.378: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 101.483
+At 101.378: 4 events are in progress
+New kernel [From 101.378 to 101.839] started.
+At 101.483: 4 events are in progress
+Another kernel is already scheduled... [Wait until 101.839]
+At 101.839: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 101.855
+At 101.839: 4 events are in progress
+New kernel [From 101.839 to 102.223] started.
+At 101.855: 4 events are in progress
+Another kernel is already scheduled... [Wait until 102.223]
+At 102.223: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 102.504
+At 102.223: 4 events are in progress
+New kernel [From 102.223 to 102.655] started.
+At 102.504: 4 events are in progress
+Another kernel is already scheduled... [Wait until 102.655]
+At 102.655: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 102.66
+At 102.655: 4 events are in progress
+New kernel [From 102.655 to 102.821] started.
+At 102.66: 4 events are in progress
+Another kernel is already scheduled... [Wait until 102.821]
+At 102.821: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 102.918
+At 102.821: 4 events are in progress
+New kernel [From 102.821 to 103.217] started.
+At 102.918: 4 events are in progress
+Another kernel is already scheduled... [Wait until 103.217]
+At 103.217: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 103.26
+At 103.217: 4 events are in progress
+New kernel [From 103.217 to 103.5] started.
+At 103.26: 4 events are in progress
+Another kernel is already scheduled... [Wait until 103.5]
+At 103.5: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 103.502
+At 103.5: 4 events are in progress
+New kernel [From 103.5 to 103.891] started.
+At 103.502: 4 events are in progress
+Another kernel is already scheduled... [Wait until 103.891]
+At 103.891: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 103.997
+At 103.891: 4 events are in progress
+New kernel [From 103.891 to 104.275] started.
+At 103.997: 4 events are in progress
+Another kernel is already scheduled... [Wait until 104.275]
+At 104.275: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 104.276
+At 104.275: 4 events are in progress
+New kernel [From 104.275 to 104.659] started.
+At 104.276: 4 events are in progress
+Another kernel is already scheduled... [Wait until 104.659]
+At 104.659: 4 events are in progress
+Scheduled kernel is finished.
+New event will start at 104.94
+At 104.659: 4 events are in progress
+New kernel [From 104.659 to 105.171] started.
+At 104.78: 4 events are in progress
+Scheduled memcpy is finished.
+The number of co-scheduled memcpys (H->D), is reduced, so their finish time is also reduced
+Finish time of existing memcpy has been brought forward from 107.432 to 106.106
+At 104.94: 3 events are in progress
+Another kernel is already scheduled... [Wait until 105.171]
+At 105.171: 3 events are in progress
+Scheduled kernel is finished.
+New event will start at 105.172
+At 105.171: 3 events are in progress
+New kernel [From 105.171 to 105.337] started.
+At 105.172: 3 events are in progress
+Another kernel is already scheduled... [Wait until 105.337]
+At 105.337: 3 events are in progress
+Scheduled kernel is finished.
+New event will start at 105.434
+At 105.337: 3 events are in progress
+New kernel [From 105.337 to 105.904] started.
+At 105.434: 3 events are in progress
+Another kernel is already scheduled... [Wait until 105.904]
+At 105.904: 3 events are in progress
+Scheduled kernel is finished.
+New event will start at 105.905
+At 105.904: 3 events are in progress
+New kernel [From 105.904 to 106.187] started.
+At 105.905: 3 events are in progress
+Another kernel is already scheduled... [Wait until 106.187]
+At 106.106: 3 events are in progress
+Scheduled memcpy is finished.
+At 106.187: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 106.189
+At 106.187: 2 events are in progress
+New kernel [From 106.187 to 106.754] started.
+At 106.189: 2 events are in progress
+Another kernel is already scheduled... [Wait until 106.754]
+At 106.754: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 106.76
+At 106.754: 2 events are in progress
+New kernel [From 106.754 to 107.137] started.
+At 106.76: 2 events are in progress
+Another kernel is already scheduled... [Wait until 107.137]
+At 107.137: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 107.139
+At 107.137: 2 events are in progress
+New kernel [From 107.137 to 107.226] started.
+At 107.139: 2 events are in progress
+Another kernel is already scheduled... [Wait until 107.226]
+At 107.226: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 107.302
+At 107.226: 2 events are in progress
+New kernel [From 107.226 to 107.738] started.
+At 107.302: 2 events are in progress
+Another kernel is already scheduled... [Wait until 107.738]
+At 107.738: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 107.739
+At 107.738: 2 events are in progress
+New kernel [From 107.738 to 107.741] started.
+At 107.739: 2 events are in progress
+Another kernel is already scheduled... [Wait until 107.741]
+At 107.741: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 107.742
+At 107.741: 2 events are in progress
+New kernel [From 107.741 to 108.308] started.
+At 107.742: 2 events are in progress
+Another kernel is already scheduled... [Wait until 108.308]
+At 108.308: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 108.309
+At 108.308: 2 events are in progress
+New kernel [From 108.308 to 108.492] started.
+At 108.309: 2 events are in progress
+Another kernel is already scheduled... [Wait until 108.492]
+At 108.492: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 108.516
+At 108.492: 2 events are in progress
+New kernel [From 108.492 to 109.058] started.
+At 108.516: 2 events are in progress
+Another kernel is already scheduled... [Wait until 109.058]
+At 109.058: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.065
+At 109.058: 2 events are in progress
+New kernel [From 109.058 to 109.061] started.
+At 109.061: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.069
+At 109.065: 2 events are in progress
+New kernel [From 109.065 to 109.154] started.
+At 109.069: 2 events are in progress
+Another kernel is already scheduled... [Wait until 109.154]
+At 109.154: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.23
+At 109.154: 2 events are in progress
+New kernel [From 109.154 to 109.156] started.
+At 109.156: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.157
+At 109.157: 2 events are in progress
+New kernel [From 109.157 to 109.16] started.
+At 109.16: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.16
+At 109.16: 2 events are in progress
+New kernel [From 109.16 to 109.163] started.
+At 109.163: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.166
+At 109.166: 2 events are in progress
+New kernel [From 109.166 to 109.168] started.
+At 109.168: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.176
+At 109.176: 2 events are in progress
+New kernel [From 109.176 to 109.178] started.
+At 109.178: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.477
+At 109.23: 2 events are in progress
+New kernel [From 109.23 to 109.233] started.
+At 109.233: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.234
+At 109.234: 2 events are in progress
+New kernel [From 109.234 to 109.418] started.
+At 109.418: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.442
+At 109.442: 2 events are in progress
+New kernel [From 109.442 to 109.445] started.
+At 109.445: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.453
+At 109.453: 2 events are in progress
+New kernel [From 109.453 to 109.455] started.
+At 109.455: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.457
+At 109.457: 2 events are in progress
+New kernel [From 109.457 to 109.459] started.
+At 109.459: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.46
+At 109.46: 2 events are in progress
+New kernel [From 109.46 to 109.462] started.
+At 109.462: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.466
+At 109.466: 2 events are in progress
+New kernel [From 109.466 to 109.467] started.
+At 109.467: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.475
+At 109.475: 2 events are in progress
+New kernel [From 109.475 to 109.478] started.
+At 109.477: 2 events are in progress
+New memcpy [From 109.477 to 109.481] started.
+At 109.478: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.776
+At 109.481: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 109.491
+At 109.491: 2 events are in progress
+New kernel [From 109.491 to 109.65] started.
+At 109.65: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 109.714
+At 109.714: 2 events are in progress
+New kernel [From 109.714 to 110.18] started.
+At 109.776: 2 events are in progress
+New memcpy [From 109.776 to 109.78] started.
+At 109.78: 2 events are in progress
+Scheduled memcpy is finished.
+New event will start at 109.79
+At 109.79: 2 events are in progress
+Another kernel is already scheduled... [Wait until 110.18]
+At 110.18: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 110.296
+At 110.18: 2 events are in progress
+New kernel [From 110.18 to 110.34] started.
+At 110.296: 2 events are in progress
+Another kernel is already scheduled... [Wait until 110.34]
+At 110.34: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 110.403
+At 110.34: 2 events are in progress
+New kernel [From 110.34 to 110.906] started.
+At 110.403: 2 events are in progress
+Another kernel is already scheduled... [Wait until 110.906]
+At 110.906: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 110.907
+At 110.906: 2 events are in progress
+New kernel [From 110.906 to 111.372] started.
+At 110.907: 2 events are in progress
+Another kernel is already scheduled... [Wait until 111.372]
+At 111.372: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 111.489
+At 111.372: 2 events are in progress
+New kernel [From 111.372 to 111.938] started.
+At 111.489: 2 events are in progress
+Another kernel is already scheduled... [Wait until 111.938]
+At 111.938: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 111.953
+At 111.938: 2 events are in progress
+New kernel [From 111.938 to 112.505] started.
+At 111.953: 2 events are in progress
+Another kernel is already scheduled... [Wait until 112.505]
+At 112.505: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 112.506
+At 112.505: 2 events are in progress
+New kernel [From 112.505 to 113.076] started.
+At 112.506: 2 events are in progress
+Another kernel is already scheduled... [Wait until 113.076]
+At 113.076: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 113.092
+At 113.076: 2 events are in progress
+New kernel [From 113.076 to 113.642] started.
+At 113.092: 2 events are in progress
+Another kernel is already scheduled... [Wait until 113.642]
+At 113.642: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 113.657
+At 113.642: 2 events are in progress
+New kernel [From 113.642 to 114.025] started.
+At 113.657: 2 events are in progress
+Another kernel is already scheduled... [Wait until 114.025]
+At 114.025: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 114.026
+At 114.025: 2 events are in progress
+New kernel [From 114.025 to 114.596] started.
+At 114.026: 2 events are in progress
+Another kernel is already scheduled... [Wait until 114.596]
+At 114.596: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 114.612
+At 114.596: 2 events are in progress
+New kernel [From 114.596 to 115.162] started.
+At 114.612: 2 events are in progress
+Another kernel is already scheduled... [Wait until 115.162]
+At 115.162: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 115.163
+At 115.162: 2 events are in progress
+New kernel [From 115.162 to 115.545] started.
+At 115.163: 2 events are in progress
+Another kernel is already scheduled... [Wait until 115.545]
+At 115.545: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 115.546
+At 115.545: 2 events are in progress
+New kernel [From 115.545 to 116.111] started.
+At 115.546: 2 events are in progress
+Another kernel is already scheduled... [Wait until 116.111]
+At 116.111: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 116.113
+At 116.111: 2 events are in progress
+New kernel [From 116.111 to 116.677] started.
+At 116.113: 2 events are in progress
+Another kernel is already scheduled... [Wait until 116.677]
+At 116.677: 2 events are in progress
+Scheduled kernel is finished.
+New event will start at 116.679
+At 116.677: 2 events are in progress
+New kernel [From 116.677 to 117.061] started.
+At 116.679: 2 events are in progress
+Another kernel is already scheduled... [Wait until 117.061]
+At 117.061: 2 events are in progress
+Scheduled kernel is finished.
+At 117.061: 1 events are in progress
+New kernel [From 117.061 to 117.627] started.
+At 117.627: 1 events are in progress
+Scheduled kernel is finished.
+New event will start at 117.629
+At 117.629: 1 events are in progress
+New kernel [From 117.629 to 118.012] started.
+At 118.012: 1 events are in progress
+Scheduled kernel is finished.
+       App      Loop O.Runtime R.Runtime  Slowdown
+         0         1   104.636   117.061  11.8742%
+         1         1   104.636   118.012  12.7835%
+Simulation ends at 118.012

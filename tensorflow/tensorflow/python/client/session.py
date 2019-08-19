@@ -533,6 +533,7 @@ class _FetchHandler(object):
       A structure of the same shape as the original `fetches` argument but
         containing tensors or None (for fetched ops).
     """
+#    print("KST_TEST_RESULT ", tensor_values)
     full_values = []
     assert len(self._final_fetches) == len(tensor_values)
     i = 0
@@ -927,7 +928,6 @@ class BaseSession(SessionInterface):
         compat.as_bytes(options.SerializeToString())) if options else None
     run_metadata_ptr = tf_session.TF_NewBuffer() if run_metadata else None
 
-    print("KST_TEST_FETCH", fetches)
     try:
       result = self._run(None, fetches, feed_dict, options_ptr,
                          run_metadata_ptr)
@@ -1136,6 +1136,7 @@ class BaseSession(SessionInterface):
           feed_dict_tensor[subfeed_t] = np_val
           feed_map[compat.as_bytes(subfeed_t.name)] = (subfeed_t, subfeed_val)
 
+#    print("KST_FEED_DICT ", feed_dict_tensor)
     # Create a fetch handler to take care of the structure of fetches.
     fetch_handler = _FetchHandler(
         self._graph, fetches, feed_dict_tensor, feed_handles=feed_handles)
@@ -1156,6 +1157,7 @@ class BaseSession(SessionInterface):
                              feed_dict_tensor, options, run_metadata)
     else:
       results = []
+#    print("KST_CHK_RESULT ", results)
     return fetch_handler.build_results(self, results)
 
   def make_callable(self, fetches, feed_list=None, accept_options=False):

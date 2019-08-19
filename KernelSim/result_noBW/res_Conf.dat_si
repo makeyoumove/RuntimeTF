@@ -1,0 +1,44 @@
+Open configuration file.
+Open Application data for App 0.
+106.353
+Open Application data for App 1.
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+ERROR: data have problem - invalid time[3]
+494.47
+Reading data is done.
+            App           Loop      O.Runtime      R.Runtime       Slowdown
+              0          94026    9.99995e+06      1.032e+07         3.201%
+              1          20223    9.99967e+06    1.10216e+07       10.2196%
+Simulation ends at 1.10216e+07

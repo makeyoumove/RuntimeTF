@@ -12,8 +12,7 @@ from tensorflow.core.protobuf import config_pb2
 config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
 
-#in_dir = '/home/dumbo/inception_cifar_data/convert_ilsvrc2012'
-in_dir = '/home/dumbo/inception_cifar_data/cifar-10-batches-py'
+in_dir = '/home/dumbo/inception_cifar_data/convert_ilsvrc2012'
 in_name = 'imagenet'
 model_name = 'inception3'
 batch_size = 64
@@ -25,10 +24,8 @@ tf.app.flags.DEFINE_string("job_name", "", "'ps' / 'worker'")
 tf.app.flags.DEFINE_integer("task_index", 0, "Index of task")
 tf.app.flags.DEFINE_integer("batch_size", 64, "Batch size")
 tf.app.flags.DEFINE_integer("iter", 100, "Iteration #")
-tf.app.flags.DEFINE_string("data_name", "cifar10", "Dataset")
-tf.app.flags.DEFINE_string("model_name", "alexnet", "Model")
-#tf.app.flags.DEFINE_string("data_name", "imagenet", "Dataset")
-#tf.app.flags.DEFINE_string("model_name", "inception3", "Model")
+tf.app.flags.DEFINE_string("data_name", "imagenet", "Dataset")
+tf.app.flags.DEFINE_string("model_name", "inception3", "Model")
 tf.app.flags.DEFINE_boolean("use_tf_layers", True, "Use_TF_Layers")
 tf.app.flags.DEFINE_boolean("fp16_vars", False, "FP16_Vars")
 tf.app.flags.DEFINE_boolean("use_fp16", False, "Use_FP16")
@@ -73,8 +70,8 @@ elif params.job_name == "worker":
         with tf.device(tf.train.replica_device_setter(worker_device="/job:worker/task:%d" % params.task_index, 
                 cluster=cluster)):
             print("Prepare...")
-            global_step = tf.get_variable('global_step', [], dtype=tf.int32, initializer=tf.constant_initializer(0), 
-                    trainable=False)
+            global_step = tf.get_variable('global_step', [], initializer=tf.constant_initializer(0), 
+                    trainable=False, dtype=tf.int32)
             dataset = datasets.create_dataset(in_dir, in_name)
             model = model_config.get_model_config(model_name, in_name)(params=params)
 
@@ -83,63 +80,21 @@ elif params.job_name == "worker":
 
             reader = dataset.get_input_preprocessor('default')(batch_size, output_shape, 1, dtype=model.data_type, 
                     train=False, distortions=True, resize_method='bilinear')
-
-            all_images, all_labels = dataset.read_data_files('train')
-            all_shape = (np.shape(all_images), np.shape(all_labels))
-            print("SHAPE ", all_shape[0], all_shape[1])
-#            ds = tf.data.Dataset.from_tensor_slices([all_images, all_labels])
-            all_images = tf.reshape(all_images, [all_shape[0][0], output_shape[0][1], output_shape[0][2], output_shape[0][3]])
-            all_labels = tf.reshape(all_labels, [all_shape[1][0], 1])
-            ds = tf.data.Dataset.from_tensor_slices((all_images, all_labels))
-            ds = ds.batch(batch_size)
-            ds = ds.shuffle(buffer_size=batch_size)
-            ds = ds.prefetch(buffer_size=batch_size)
-            ds = ds.repeat()
-            it = ds.make_initializable_iterator()
-#            all_images = tf.constant(all_images)
-#            all_labels = tf.constant(all_labels)
-
-#            print("ALL_IMAGE ", all_images)
-#            print("ALL_LABEL ", all_labels)
-
-#            ds = reader.create_dataset(batch_size, 1, batch_size, dataset, 'data', 
-#                    False, False, None, False, None, False, None)
-#            ds = tf.data.TFRecordDataset.list_files(dataset.tf_record_pattern('train'))
-#            ds = ds.apply(tf.data.experimental.parallel_interleave(
-#                tf.data.TFRecordDataset, cycle_length=10, sloppy=False, prefetch_input_elements=None))
-#            counter = tf.data.Dataset.range(batch_size)
-#            counter = counter.repeat()
-#            ds = tf.data.Dataset.zip((ds, counter))
-#            ds = ds.prefetch(buffer_size=batch_size)
-#            ds = ds.repeat()
-#            ds = ds.apply(
-#                tf.data.experimental.map_and_batch(
-#                    map_func=reader.parse_and_preprocess,
-#                    batch_size=batch_size,
-#                    num_parallel_batches=1))
-#            ds = ds.prefetch(buffer_size=num_splits)
-
-#            it1 = tf.compat.v1.data.Iterator(all_images. tf.global_variables_initializer, model.data_type, output_shape, tf.Tensor)
-#            it2 = tf.compat.v1.data.Iterator(all_labels. tf.global_variables_initializer, model.data_type, output_shape, tf.Tensor)
+            ds = reader.create_dataset(batch_size, 1, batch_size, dataset, 'train', 
+                    False, False, None, False, None, False, None)
             it = tf.compat.v1.data.make_initializable_iterator(ds)
 
 #           sess = tf.Session(config=config)
 #           sess.run(it.initializer)
 
-#            input_list = [it1.get_next(), it2.get_next()]
+#           input_list = sess.run(it.get_next())
             input_list = it.get_next()
-            print("INPUT_LIST ", input_list)
-#            input_list = reader.minibatch(dataset, 'train', params)
 
             shape1 = np.shape(input_list[0])
             shape2 = np.shape(input_list[1])
-#            shape1 = output_shape[0]
-#            shape2 = output_shape[1]
 
-            shape1 = [None, shape1[1], shape1[2], shape1[3]]
-            shape2 = [None, shape2[1]]
-#            shape1 = (None, shape1[1], shape1[2], shape1[3])
-#            shape2 = (None, shape2[1])
+            shape1 = (None, shape1[1], shape1[2], shape1[3])
+            shape2 = (None, shape2[1])
 
             print(shape1)
             print(shape2)
@@ -151,7 +106,6 @@ elif params.job_name == "worker":
 
             Loss = tf.reduce_mean(tf.losses.sparse_softmax_cross_entropy(labels=Y_Label, logits=output))
             train_step = tf.train.AdamOptimizer(0.005).minimize(Loss, global_step=global_step)
-#            train_step = tf.train.AdamOptimizer(0.005).minimize(Loss)
 #            accuracy = tf.reduce_mean(tf.cast(tf.equal(tf.argmax(output, 1), tf.argmax(Y_Label, 1)), model.data_type))
 
             init_op = [tf.global_variables_initializer(), it.initializer]
@@ -159,6 +113,7 @@ elif params.job_name == "worker":
         print("Start..")
 #        total_parameters = 0
 #        for variable in tf.trainable_variables():
+        # shape is an array of tf.Dimension
 #            shape = variable.get_shape()
 #            print(shape)
 #            print(len(shape))
@@ -180,10 +135,9 @@ elif params.job_name == "worker":
             #sess = tf.Session(config=config)
 #    sess = sv.managed_session(server.target, config=config)
 #    with sess:
-#        options = config_pb2.RunOptions(split = params.split) 
         split = params.split
 #        split = 4
-        options = config_pb2.RunOptions(split = split) 
+        options = config_pb2.RunOptions(split = split)
 
         with sv.managed_session(server.target, config=config) as sess:
             sess.graph._unsafe_unfinalize()
@@ -194,7 +148,7 @@ elif params.job_name == "worker":
             while not sv.should_stop() and step < niter:
 #        for i in range(1000):
                 images, labels = sess.run(next_item)
-#                images, labels = sess.run(reader.minibatch(dataset, 'train', params))
+#                res, step = sess.run([train_step, global_step], feed_dict = {X:images, Y_Label:labels})
                 res = sess.run(train_step, feed_dict = {X:images, Y_Label:labels}, options=options)
 #                sess.run(split_step)
 #                step = sess.run(global_step)
@@ -202,7 +156,6 @@ elif params.job_name == "worker":
 #                print("STEP", step)
                 if step % 50 == 0 :
                     images, labels = sess.run(it.get_next())
-#                    images, labels = sess.run(reader.minibatch(dataset, 'train', params))
                     print("Worker ", params.task_index, " Step ", step, ":", sess.run(Loss, feed_dict = {X:images, Y_Label:labels}, options=options))
 
         sv.stop()

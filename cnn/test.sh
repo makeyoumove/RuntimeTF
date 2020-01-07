@@ -4,14 +4,24 @@ source ~/RuntimeTF/tensorflow/bin/activate
 #source ~/tensorflow/bin/activate
 source ~/.bashrc
 
-export CUDA_VISIBLE_DEVICES=2
+export CUDA_VISIBLE_DEVICES=0
+
+#dstat -cdmn -t --output data_${1}_${2}_${3}_${4}/dstat_${1}_${2}_${3}_${4}.csv 1>> /dev/null &
+#nvidia-smi dmon -s uct -o DT -i 0 >& data_${1}_${2}_${3}_${4}/gpu_${1}_${2}_${3}_${4}.csv &
+#nvprof --profile-all-processes --log-file data_${1}_${2}_${3}_${4}/nvprof_${1}_${2}_${3}_${4}_%p --print-gpu-trace --csv &
+
+date
 #nvprof --log-file nvprof_gpu_trace_%p --print-gpu-trace --csv numactl -C 0-3 -N 0 python3 test.py
 #numactl -C 0-3 -N 0 pdb test.py
-time numactl -C 0-7 -N 0 python3 test.py --ps_hosts=localhost:2222 --worker_hosts=localhost:2223 --job_name=ps --task_index=0 -data_name=$1 -model_name=$2 -batch_size=$3 &
-pid=$!
-time numactl -C 0-7 -N 0 python3 test.py --ps_hosts=localhost:2222 --worker_hosts=localhost:2223 --job_name=worker --task_index=0 -data_name=$1 -model_name=$2 -batch_size=$3
+#CUDA_VISIBLE_DEVICES='' numactl -C 0-7 -N 0 time python3 test.py --ps_hosts=localhost:2222 --worker_hosts=localhost:2223 --job_name=ps --task_index=0 --data_name=$1 --model_name=$2 --batch_size=$3 --iter=$4 --split=$5 &
+CUDA_VISIBLE_DEVICES='' numactl -C 8-15 -N 0 time python3 test.py --ps_hosts=localhost:2222 --worker_hosts=localhost:2223 --job_name=ps --task_index=0 --data_name=$1 --model_name=$2 --batch_size=$3 --iter=$4 &
+sleep 1
+#CUDA_VISIBLE_DEVICES=0 numactl -C 0-7 -N 0 time python3 test.py --ps_hosts=localhost:2222 --worker_hosts=localhost:2223 --job_name=worker --task_index=0 --data_name=$1 --model_name=$2 --batch_size=$3 --iter=$4 --split=$5
+CUDA_VISIBLE_DEVICES=0 numactl -C 8-15 -N 0 time python3 test.py --ps_hosts=localhost:2222 --worker_hosts=localhost:2223 --job_name=worker --task_index=0 --data_name=$1 --model_name=$2 --batch_size=$3 --iter=$4
+date
 
 sleep 5
-kill -9 $pid
+#./kill.sh
+./kill2.sh
 
 deactivate

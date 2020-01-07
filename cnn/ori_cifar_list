@@ -1,0 +1,7 @@
+128_6000_alexnet
+64_2000_densenet40_k12
+128_5000_resnet20
+128_4000_resnet32
+128_3000_resnet44
+128_2500_resnet56
+32_6000_trivial

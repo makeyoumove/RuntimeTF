@@ -1,8 +1,11 @@
-16_300_vgg16
-32_300_vgg16
 32_1000_googlenet
 32_300_inception3
 32_500_nasnet
+32_500_overfeat
 64_300_resnet50
 32_300_resnet101
 32_300_resnet152
+32_1000_trivial
+32_500_vgg11
+32_300_vgg16
+32_300_vgg19

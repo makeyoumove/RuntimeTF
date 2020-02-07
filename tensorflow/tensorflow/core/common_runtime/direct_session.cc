@@ -430,7 +430,7 @@ Status DirectSession::RunInternal(int64 step_id, const RunOptions& run_options,
                                   CallFrameInterface* call_frame,
                                   ExecutorsAndKeys* executors_and_keys,
                                   RunMetadata* run_metadata) {
-//	std::cout << "KST_CHECK_RunInternal\n";
+	std::cout << "KST_CHECK_RunInternal\n";
   const uint64 start_time_usecs = options_.env->NowMicros();
   string session_id_meta = strings::StrCat("SessionRun #id=", step_id, "#");
   tracing::ScopedActivity activity(session_id_meta);
@@ -703,9 +703,9 @@ Status DirectSession::Run(const RunOptions& run_options,
   TF_RETURN_IF_ERROR(CheckGraphCreated("Run()"));
   direct_session_runs->GetCell()->IncrementBy(1);
 // KST_SPLIT
-	int spl = 1, sps;
+	int spl = 8, sps;
 	std::vector<Tensor> output_gather;
-
+	std::cout << "KST_CHK_SPLIT " << spl << std::endl;
 	if(inputs.size() >= 2) {
 //		std::cout << "KST_TEST_SLICE " << inputs[1].second.dims() << " ";
 //		for (int i=0; i<inputs[1].second.dims(); i++) std:: cout << inputs[1].second.dim_size(i) << " ";
@@ -718,7 +718,7 @@ Status DirectSession::Run(const RunOptions& run_options,
 for(int sc=0; sc<spl; sc++) {
 
 //	std::cout << "KST_CHK_OUTPUTSIZE " << output_names.size() << "\n" << "KST_CHK_TARGETSIZE " << target_nodes.size() << std::endl;
-//	std::cout << "KST_CHK_INPUTSIZE " << inputs.size() << " ";
+	std::cout << "KST_CHK_INPUTSIZE " << inputs.size() << " ";
   // Extract the inputs names for this run of the session.
   std::vector<string> input_tensor_names;
   input_tensor_names.reserve(inputs.size());
@@ -728,12 +728,12 @@ for(int sc=0; sc<spl; sc++) {
 		size_t value = it.second.AllocatedBytes();
 		value /= spl;
     input_size += value;
-//		std::cout << it.first << " " << value << " ";
+		std::cout << it.first << " " << value << " ";
     input_size += it.second.AllocatedBytes();
-//		std::cout << it.first << " " << it.second.AllocatedBytes() << " ";
+		std::cout << it.first << " " << it.second.AllocatedBytes() << " ";
   }
   metrics::RecordGraphInputTensors(input_size);
-//	std::cout << std::endl;
+	std::cout << std::endl;
 
   // Check if we already have an executor for these arguments.
   ExecutorsAndKeys* executors_and_keys;

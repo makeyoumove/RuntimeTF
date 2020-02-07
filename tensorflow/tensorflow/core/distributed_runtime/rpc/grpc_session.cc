@@ -16,6 +16,7 @@ limitations under the License.
 #include "tensorflow/core/distributed_runtime/rpc/grpc_session.h"
 
 #include <unordered_map>
+#include <iostream>
 
 #include "tensorflow/core/common_runtime/session_factory.h"
 #include "tensorflow/core/distributed_runtime/call_options.h"
@@ -185,11 +186,28 @@ Status GrpcSession::RunHelper(
     const std::vector<string>& output_tensor_names,
     const std::vector<string>& target_node_names, std::vector<Tensor>* outputs,
     RunMetadata* run_metadata, const string& prun_handle) {
+//    std::cout << "KST_CHK_GRPC " << run_options.split() << std::endl;
   // Convert to proto
+  int spl = 1, sps;
+  if(inputs.size() >= 2 && run_options.split() > 1) spl = run_options.split();
+//  std::cout << "KST_CHK_Target " << target_node_names.size() << " ";
+//  for (const auto& tn : target_node_names) std::cout << tn << " ";
+//  std::cout << std::endl;
+//  std::cout << "KST_CHK_Output " << output_tensor_names.size() << " ";
+//  for (const auto& on : output_tensor_names) std::cout << on << " ";
+//  std::cout << std::endl;
+for(int sc=0; sc<spl; sc++) {
   std::unique_ptr<MutableRunStepRequestWrapper> req(
       master_->CreateRunStepRequest());
   std::unique_ptr<MutableRunStepResponseWrapper> resp(
       master_->CreateRunStepResponse());
+//  std::cout << "KST_CHK_INPUTSIZE " << inputs.size() << " ";
+//  for (const auto& it : inputs) {
+//    size_t value = it.second.AllocatedBytes();
+//    value /= spl;
+//    std::cout << it.first << " " << value << " " << it.second.AllocatedBytes() << " ";
+//  }
+//  std::cout << std::endl;
 
   *req->mutable_options() = run_options;
 
@@ -203,7 +221,10 @@ Status GrpcSession::RunHelper(
   }
 
   for (const auto& it : inputs) {
-    req->add_feed(it.first, it.second);
+	sps = it.second.dim_size(0) / spl;
+	Tensor sliced = it.second.Slice(sc * sps, (sc + 1) * sps);
+//    req->add_feed(it.first, it.second);
+    req->add_feed(it.first, sliced);
   }
 
   // Support long error messages by storing the error code in the response body.
@@ -214,10 +235,14 @@ Status GrpcSession::RunHelper(
   std::unordered_map<string, int> output_name_to_offset;
   for (int i = 0; i < output_tensor_names.size(); ++i) {
     const string& name = output_tensor_names[i];
+    if(name == "global_step:0" && sc > 0) continue;
+//    std::cout << "KST_GRPC_Outputname " << name << std::endl;
     if (output_name_to_offset.insert(std::make_pair(name, i)).second) {
       req->add_fetch(name);
     }
   }
+//  std::cout << "KST_GRPC_FETCH " << sc << " " << req->num_fetches() << std::endl;
+
   for (const string& target : target_node_names) {
     req->add_target(target);
   }
@@ -230,6 +255,8 @@ Status GrpcSession::RunHelper(
   if (resp->status_code() != error::Code::OK) {
     return Status(resp->status_code(), resp->status_error_message());
   }
+
+  if(sc > 0) continue;
 
   if (!output_tensor_names.empty()) {
     outputs->resize(output_tensor_names.size());
@@ -262,6 +289,7 @@ Status GrpcSession::RunHelper(
   if (run_metadata) {
     run_metadata->Swap(resp->mutable_metadata());
   }
+}
 
   return Status::OK();
 }

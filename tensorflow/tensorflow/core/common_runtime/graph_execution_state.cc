@@ -760,7 +760,7 @@ Status GraphExecutionState::BuildGraph(const BuildGraphOptions& options,
     optimized_flib.reset(new FunctionLibraryDefinition(*flib_def_));
   }
 
-	std::cout << "KST_CHECK_FLIB " << optimized_flib.get()->num_functions() << " " << flib_def_.get()->num_functions() << "\n";
+//	std::cout << "KST_CHECK_FLIB " << optimized_flib.get()->num_functions() << " " << flib_def_.get()->num_functions() << "\n";
 
   subgraph::RewriteGraphMetadata rewrite_metadata;
   if (session_options_ == nullptr ||
